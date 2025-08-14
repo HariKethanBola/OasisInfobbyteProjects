@@ -23,11 +23,10 @@ It uses **Speech Recognition**, **Text-to-Speech (TTS)**, and some pre-built Pyt
 ---
 
 ## 📂 Project Structure
-project_root/
-│
-├── voice_assistant.py # Main program
-├── requirements.txt # Python dependencies
-└── README.txt # This file
+**project_root/**
+voice_assistant.py # Main program
+requirements.txt # Python dependencies
+README.txt # This file
 ---
 
 ## 💻 Requirements
@@ -83,6 +82,8 @@ stop
 
 ## 🙌 Acknowledgements
 Special thanks to **Oasis Infobyte** for providing this internship opportunity and motivating me to explore real-world projects.
-**Done by:** Hari Kethan Bola  
+
+
+**Done by: Hari Kethan Bola** 
 **Email:** harikethanbola1234@gmail.com  
 **Phone:** 8919751369 

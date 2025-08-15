@@ -187,6 +187,8 @@ def parse_and_execute(command: str) -> str:
     if not c:
         return "Yes?"
       # 🔹 Personalized creator response
+    if "who is haris brother" in c or "who is my brother" in c:
+        return "Hari's brother are two bullshit persons \n Tirumala Ramanji🫂 \n Hari Kiran Sai🫂."
     if "who invented you" in c or "who created you" in c:
         return "I was created by using AI under the Vision of my GURU HARI KETHAN BOLA🔥."
     if "do you know about my friends" in c:
@@ -251,18 +253,12 @@ def assistant_loop():
 
     while True:
         try:
-            text = listen_voice(timeout=None, phrase_limit=7)  # waits until phrase starts
+            text = listen_voice(timeout=None, phrase_limit=7)
+            print(f"DEBUG: Recognized text: {text}")
             if not text:
-                # fallback to manual text mode if voice not working
                 text = input("You (type a command or press Enter to listen again): ").strip()
                 if not text:
                     continue
-
-            # If the user didn't say wake word, check and continue listening or treat as direct command
-            if not is_wake(text):
-                # For convenience we will still process commands even without explicit wake word.
-                # If you want to require the wake word strictly, replace the next line with `continue`
-                pass
 
             result = parse_and_execute(text)
             if result == "exit":
@@ -270,12 +266,9 @@ def assistant_loop():
                 print("Exiting assistant.")
                 break
 
-            # Speak and print result
             if result:
                 print("Assistant:", result)
-                # Speak in a separate thread to avoid blocking listening loop if needed
-                t = threading.Thread(target=say, args=(result,), daemon=True)
-                t.start()
+                say(result)
 
         except KeyboardInterrupt:
             print("\nKeyboard interrupt received. Exiting.")
